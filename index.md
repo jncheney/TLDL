@@ -6,7 +6,7 @@ Unlike radio content, which directly broadcasts content over the airwaves, podca
 
 ### TL;DL Utility
 
-Podcasts and its supporting listenership have exploded in recent years.  The podcast industry is targeted to reach $ 1 billion in 2021 [BusinessInsider](https://www.businessinsider.com/the-podcast-industry-report). A 16% increase in listeners is expected in 2021, with the total number of listeners having doubled since 2016.  Principle US market share holders include Apple, Spotify, YouTube and Google, with the first two possessing the majority share of the market.
+Podcasts and its supporting listenership have exploded in recent years.  The podcast industry is targeted to reach $ 1 billion in 2021. ([BusinessInsider](https://www.businessinsider.com/the-podcast-industry-report)) A 16% increase in listeners is expected in 2021, with the total number of listeners having doubled since 2016.  Principle US market share holders include Apple, Spotify, YouTube and Google, with the first two possessing the majority share of the market.
 
 Topics covered by podcasts are as diverse as listeners.  Though content is more readily available than ever before, what has not changed is the time needed to consume it.  The average length of podcasts is around 30 minutes; however, this distribution is skewed to the right.  (include link to spotify metrics)  A functional gap exists to encapsulate content from the surfeit of available podcasts.  Further, existing synopses tend to be inconsistent and sporadic at best.
 
