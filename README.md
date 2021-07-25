@@ -1,2 +1,2 @@
-# w210_capstone_tldl
-UC Berkeley MIDS Capstone project:  Too Long Didn't Listen
+# Too Long; Didn't Listen (TL;DL)
+UC Berkeley MIDS Capstone project
