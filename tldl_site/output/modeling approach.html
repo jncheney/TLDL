@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <title>Methodology</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+        <meta name="description" content="The supporting pipeline for this project is both simple and straight forward. Upon identifying a podcast audio file, the text is transcribed and..." />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">Too Long; Didn't Listen (TL;DL)</a></h1>
+                <nav><ul>
+                    <li><a href="/category/introduction.html">Introduction</a></li>
+                    <li><a href="/category/listeners.html">Listeners</a></li>
+                    <li class="active"><a href="/category/methodology.html">Methodology</a></li>
+                    <li><a href="/category/way-forward.html">Way Forward</a></li>
+                    <li><a href="/category/who-we-are.html">Who We Are</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/modeling approach.html" rel="bookmark"
+           title="Permalink to Methodology">Methodology</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2021-07-15T12:30:00+00:00">
+                Published: Thu 15 July 2021
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/tldl-team.html">TL;DL Team</a>
+        </address>
+<p>In <a href="/category/methodology.html">Methodology</a>.</p>
+
+</footer><!-- /.post-info -->      <p>The supporting pipeline for this project is both simple and straight forward.  Upon identifying a podcast audio file, the text is transcribed and then sent to the summarization model.  The returned abstractive summary is an easily digestable text that is approximately a paragraph in length.</p>
+<img alt="alternative text" src="/images/pipeline.png" style="width: 700px; height: 125px;" />
+<div class="section" id="transcription">
+<h2>Transcription</h2>
+<p>Google Cloud's Speech to Text API handles the transcription portion of the pipeline.  This out-of-the-box solution has many advantages, though it does impose some limitations on the final output.</p>
+<div class="section" id="advantages">
+<h3>Advantages</h3>
+<p>Google Cloud's Speech to Text API provides access to extensively developed speech recognition models.  Further, these robust models performs well with multiple speakers.  Since many podcasts have multiple speakers, this feature is essential to this application.  Finally, with an eye to the future, this solution is also highly scalable, as the computational requirements of processing audio data are offloaded to the cloud, which simplifies management of computational resources.</p>
+</div>
+<div class="section" id="disadvantages">
+<h3>Disadvantages</h3>
+<p>Cost represents the biggest disadvantage with this transcription approach.  For the enhanced model capable of processing audio from multiple speakers, and data logging opt-in enabled to reduce costs, audio transcription costs 0.6 cents per 15 second increment.  This translates to 2.4 cents per minute, and $1.44 for a 60-minute podcast episode.  Individually, this is not a concern; however, it would become an issue at scale.  It also places a key element of the pipeline's functionality on third-party resources.  With that, it necessitates remaining vigilant about changes to the API and it provider.</p>
+</div>
+</div>
+<div class="section" id="summarization-model">
+<h2>Summarization Model</h2>
+<p>Initial summarization efforts focused on extractive synopses.  These failed to meet the intent of TL;DL.  This approach tended to latch onto advertisements within podcasts, or other frequently repeated phrasing at the expense of capturing the overall content of the podcast itself.  Though more elusive in nature, an abstrative model proved to be the appropriate solution for the TL;DL application.  Numerous summarization models were explored, with varying levels of results.  The model that generated the best and most consistent results was PEGASUS, Pre-training with Extracted Gap-sentences for Abstrative Summarization.</p>
+<div class="section" id="pegasus">
+<h3>PEGASUS</h3>
+<p>PEGASUS is a state-of-the-art model for abstractive text summarization developed by Google researched and published at the 2020 International Conference on Machine Learning.  See links provided in additional readings for further information on the PEGASUS model from its designers.</p>
+<p>After experimenting on the 12 datasets used to fine-tune PEGASUS, clear winners emerged for short and long text summaries.  For the short summary, fine-tining on the <a class="reference external" href="https://www.tensorflow.org/datasets/catalog/xsum">xSum</a> dataset generated the most concise one sentence summarizations.  This dataset is sourced from 227,000 diverse BBC news articles from 2010 to 2017.  Each of the articles is accompanied by a professionally written single-sentence summary for training.  For the long summary, the best results emerged when fine-tuned on <a class="reference external" href="https://github.com/Alex-Fabbri/Multi-News">Multi-news</a>, a 56,000 multip-news corpus of news articles. This data set was accompanied by human-written summaries for the artiles from the newser.com site.
+Results from the other data sets produced either incomprensible or repetitive summaries, common problems when attempting to summarize text. Below is a sample of the results obtained when using the PEGASUS model.</p>
+<img alt="alternative text" src="/images/transcript_sample.png" style="width: 750px; height: 300px;" />
+</div>
+<div class="section" id="tl-dl-application">
+<h3>TL;DL Application</h3>
+<p>The biggest challenge with using the PEGASUS model is the fact that all the results are zero-shot summarizations.  PEGASUS was trained to summarize news articles, but our task is to summarize podcast transcripts.  The distinct differences in these types  of transcripts necessitated that a corpus of manually summarized podcast transcripts serve as the training base, rather than the original new article ones.</p>
+</div>
+<div class="section" id="additonal-readings">
+<h3>Additonal Readings</h3>
+<p><a class="reference external" href="https://arxiv.org/abs/1912.08777">PEGASUS_Paper</a></p>
+<p><a class="reference external" href="https://ai.googleblog.com/2020/06/pegasus-state-of-art-model-for.html">PEGASUS_blog</a></p>
+</div>
+</div>
+
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://getpelican.com/">Pelican</a></li>
+                            <li><a href="https://ischoolonline.berkeley.edu/data-science/">UCB MIDS</a></li>
+                            <li><a href="https://www.spotify.com/us/">Spotify</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>, which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>
